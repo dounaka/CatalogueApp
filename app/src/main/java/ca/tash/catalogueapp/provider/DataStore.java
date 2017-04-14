@@ -76,18 +76,10 @@ public class DataStore implements Serializable {
         bag.colors.add("#A36348");
         dataStore.put(bag);
 
-        // Travol
-        bag = new Bag();
-        bag.id = 12002l;
-        bag.name = "Travol";
-        bag.shortDesc = "Soft leather bag";
-        bag.longDesc = "Our Travol is the ultimate shape changing, go to work, bum around town, travel the world, do it every day carry.";
-        // no colors so not available
-        dataStore.put(bag);
 
         // Ubarnito
         bag = new Bag();
-        bag.id = 12003l;
+        bag.id = 12002l;
         bag.name = "Urbanito";
         bag.shortDesc = "Biker basics";
         bag.longDesc = "Our Urbanito is the ultimate shape changing, go to work, bum around town, travel the world, do it every day carry.";
@@ -95,5 +87,15 @@ public class DataStore implements Serializable {
         bag.colors.add("#CBC340");
         bag.colors.add("#F3A03A");
         dataStore.put(bag);
+
+        // Travol
+        bag = new Bag();
+        bag.id = 12003l;
+        bag.name = "Travol";
+        bag.shortDesc = "Soft leather bag";
+        bag.longDesc = "Our Travol is the ultimate shape changing, go to work, bum around town, travel the world, do it every day carry.";
+        // no colors so not available
+        dataStore.put(bag);
+
     }
 }

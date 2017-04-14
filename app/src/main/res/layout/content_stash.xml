@@ -8,7 +8,7 @@
     tools:context="ca.tash.catalogueapp.StashActivity"
     tools:showIn="@layout/activity_stash">
 
-    <FrameLayout
+    <FrameLayout  android:background="#ffd9d9d9"
         android:id="@+id/containerCatalogue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

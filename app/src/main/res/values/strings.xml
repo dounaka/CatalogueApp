@@ -92,6 +92,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_home">TASH</string>
     <string name="title_catalogue">Product catalogue</string>
-    <string name="title_wishlist">Wishlist</string>
+    <string name="title_wishlist">Your wishlist</string>
+    <string name="total">Total $500</string>
+    <string name="proceed_checkout">Proceed to check out</string>
+    <string name="free_shipping">Free Shipping World Wide</string>
+    <string name="subtotal"><b>Sub total</b> $500</string>
     <string name="error_notfound_data">Error, data not found</string>
 </resources>
