@@ -1,6 +1,8 @@
 package ca.tash.catalogueapp.store;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -8,11 +10,15 @@ import java.util.Set;
  */
 
 public class Bag extends Entity {
+
+    public static final String PARAM_BAG_ID = "param.bagId";
     public String name, shortDesc, longDesc, pict;
-    public int priceInCents;
+
+    public long photoId;
+    public int price;
     public float rating;
-    public Set<String> colors = new HashSet<>();
-    public String height, width, deep;
+    public List<String> colors = new ArrayList<>();
+    public int heightInInches, widthInInches, deepInInches;
 
 
 }

@@ -11,8 +11,6 @@ import ca.tash.catalogueapp.store.Bag;
 /**
  * Created by dounaka on 2017-04-13.
  * very simple fragment
- * <p>
- * FIXME should be changed to a view, if it has only display logic
  */
 
 public class BagThumbnailView extends EntityView<Bag> {
@@ -30,7 +28,7 @@ public class BagThumbnailView extends EntityView<Bag> {
             mtxtBagName.setText(R.string.error_notfound_data);
         else {
             mtxtBagName.setText(bag.name);
-            mImgBag.setImageResource(PhotoProvider.getPhotoRes(bag.id));
+            mImgBag.setImageResource(PhotoProvider.getPhotoRes(bag.photoId));
         }
     }
 

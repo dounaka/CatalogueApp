@@ -35,12 +35,12 @@
                 android:gravity="right"
                 android:text="@string/total"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_title_size" />
+                android:textSize="@dimen/text_size_big" />
 
         </LinearLayout>
 
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
         android:minHeight="200dp" android:background="#22000333"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         android:orientation="vertical">
 
 
-    </LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
 
         <LinearLayout
@@ -65,13 +65,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/subtotal"
                 android:textColor="@color/black"
-                android:textSize="@dimen/text_title_size" />
+                android:textSize="@dimen/text_size_big" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/free_shipping"
-                android:textSize="@dimen/text_title_size" />
+                android:textSize="@dimen/text_size_big" />
 
 
             <Button

@@ -44,6 +44,8 @@ public abstract class EntityView<E extends Entity> extends FrameLayout {
         showEntity(this.entity);
     }
 
+    public E getEntity() {return this.entity;}
+
     protected abstract void showEntity(E entity);
 
     public abstract void bindControls(Context ctx);
@@ -52,7 +54,6 @@ public abstract class EntityView<E extends Entity> extends FrameLayout {
         LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutInflater.inflate(getViewResourceId(), this, true);
         bindControls(ctx);
-        setElevation(2);
     }
 
 

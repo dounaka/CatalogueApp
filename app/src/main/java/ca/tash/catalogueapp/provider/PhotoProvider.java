@@ -11,13 +11,13 @@ public class PhotoProvider {
 
     public static int getPhotoRes(long bagid) {
 
-        if (bagid == 12001)
+        if (bagid == 101)
             return R.drawable.carrierbag;
 
-        if (bagid == 12002)
+        if (bagid == 102)
             return R.drawable.travol;
 
-        if (bagid == 12003)
+        if (bagid == 103)
             return R.drawable.urbanito;
 
         return -1;

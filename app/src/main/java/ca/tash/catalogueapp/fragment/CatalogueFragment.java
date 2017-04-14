@@ -2,21 +2,19 @@ package ca.tash.catalogueapp.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
-import java.util.List;
+import android.widget.Toast;
 
 import ca.tash.catalogueapp.R;
 import ca.tash.catalogueapp.provider.DataStore;
 import ca.tash.catalogueapp.store.Bag;
-import ca.tash.catalogueapp.ui.BagAdapter;
+import ca.tash.catalogueapp.ui.EntityAdapter;
 import ca.tash.catalogueapp.ui.BagThumbnailView;
 import ca.tash.catalogueapp.ui.EntityView;
 
@@ -24,11 +22,18 @@ import ca.tash.catalogueapp.ui.EntityView;
  * Created by dounaka on 2017-04-13.
  */
 
-public class CatalogueFragment extends Fragment {
+public class CatalogueFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView mRecyclerView;
-    private BagAdapter<Bag> mAdapter;
+    private EntityAdapter<Bag> mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+
+    public interface Listener {
+        void onBagDetail(long bagId);
+    }
+    private Listener mListener;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +43,15 @@ public class CatalogueFragment extends Fragment {
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
+        mAdapter = new EntityAdapter<Bag>() {
+            @Override
+            protected EntityView createEntityView(Context ctx) {
+                BagThumbnailView view = new BagThumbnailView(ctx);
+                view.setOnClickListener(CatalogueFragment.this);
+                return view;
+            }
+        };
+        mRecyclerView.setAdapter(mAdapter);
         return mainView;
     }
 
@@ -45,17 +59,30 @@ public class CatalogueFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mAdapter = new BagAdapter<Bag>() {
-            @Override
-            protected EntityView createEntityView(Context ctx) {
-                return new BagThumbnailView(ctx);
-            }
-        };
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.entities.addAll(
-                DataStore.getInstance().getAll(Bag.class));
+        mAdapter.setEntities(DataStore.getInstance().getAll(Bag.class));
         mAdapter.notifyDataSetChanged();
     }
 
+
+    @Override
+    public void onClick(View v) {
+        mListener.onBagDetail(((BagThumbnailView) v).getEntity().id);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Listener) {
+            mListener = (Listener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement CatalogueFragment.Listener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
 
 }

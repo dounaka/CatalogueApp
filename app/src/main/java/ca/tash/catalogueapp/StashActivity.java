@@ -1,10 +1,13 @@
 package ca.tash.catalogueapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 import ca.tash.catalogueapp.fragment.CatalogueFragment;
 import ca.tash.catalogueapp.fragment.WishListFragment;
+import ca.tash.catalogueapp.store.Bag;
+
 /*
     TODO L’application supporte le mode portrait seulement.
     TODO Les versions d’Android supportées sont 5 et +.
@@ -32,8 +35,25 @@ import ca.tash.catalogueapp.fragment.WishListFragment;
     TODO Variante de l’écran 1-1 avec un bouton noir au lieu du rouge.
     TODO Lorsqu’on appuie sur le bouton noir, on revient sur l’écran principal et le produit disparaît de la liste des produits désirés.
 
+    TODO change rating bar color red -> gold
+
+    TODO mettre les operations de lecture data dans un AsyncTask
+
+    TODO put bag name in action for bag detail
+
+
+    ------------------------------------
+
+    hypothese
+    General / les buttons sont au style de material Design, character en majuscule
+
+    Ecran 1-1 / action bar, conforme a Android, le nom du bag n'est pas centre, mais aligne a gauche
+
+
+
+
  */
-public class StashActivity extends FragmentActivity {
+public class StashActivity extends FragmentActivity implements CatalogueFragment.Listener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,5 +69,10 @@ public class StashActivity extends FragmentActivity {
         }
     }
 
-
+    @Override
+    public void onBagDetail(long bagId) {
+        Intent bagDetailIntent = new Intent(this, BagDetailActivity.class);
+        bagDetailIntent.putExtra(Bag.PARAM_BAG_ID, bagId);
+        startActivity(bagDetailIntent);
+    }
 }
