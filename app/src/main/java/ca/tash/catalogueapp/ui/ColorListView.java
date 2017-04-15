@@ -1,12 +1,15 @@
 package ca.tash.catalogueapp.ui;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -53,6 +56,10 @@ public class ColorListView extends HorizontalScrollView {
         for (String color : colors) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.view_color, null);
+            ImageView img = (ImageView) view.findViewById(R.id.imgColor);
+
+            GradientDrawable drawable = (GradientDrawable) img.getBackground();
+            drawable.setColor(Color.parseColor(color));
             mContainerColorListView.addView(view);
         }
 

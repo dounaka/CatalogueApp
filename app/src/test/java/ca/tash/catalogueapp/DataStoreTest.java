@@ -42,11 +42,10 @@ public class DataStoreTest {
 
     @Test
     public void testPutWishList() throws Exception {
-        WishList whishList = new WishList();
-        DataStore.getInstance().put(whishList);
-        Assert.assertTrue(DataStore.getInstance().get(WishList.class, WishList.DEFAULT_WISHLIST_ID) != null);
+        WishList wishList = DataStore.getInstance().getUserWishList();
+        Assert.assertTrue(wishList != null);
 
-        DataStore.getInstance().remove(whishList.getUid());
-        Assert.assertTrue(DataStore.getInstance().get(WishList.class, WishList.DEFAULT_WISHLIST_ID) == null);
+        DataStore.getInstance().remove(wishList.getUid());
+        Assert.assertTrue(DataStore.getInstance().getAll(WishList.class).size() == 0);
     }
 }

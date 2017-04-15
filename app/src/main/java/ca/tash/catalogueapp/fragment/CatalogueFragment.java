@@ -30,8 +30,9 @@ public class CatalogueFragment extends Fragment implements View.OnClickListener 
 
 
     public interface Listener {
-        void onBagDetail(long bagId);
+        void onBagDetail(BagThumbnailView view);
     }
+
     private Listener mListener;
 
 
@@ -66,7 +67,7 @@ public class CatalogueFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        mListener.onBagDetail(((BagThumbnailView) v).getEntity().id);
+        mListener.onBagDetail(((BagThumbnailView) v));
     }
 
     @Override

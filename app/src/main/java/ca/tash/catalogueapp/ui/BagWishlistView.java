@@ -13,11 +13,11 @@ import ca.tash.catalogueapp.store.Bag;
  * very simple fragment
  */
 
-public class BagThumbnailView extends EntityView<Bag> {
+public class BagWishlistView extends EntityView<Bag> {
     private ImageView mImgBag;
     private TextView mtxtBagName;
 
-    public BagThumbnailView(Context ctx) {
+    public BagWishlistView(Context ctx) {
         super(ctx);
     }
 

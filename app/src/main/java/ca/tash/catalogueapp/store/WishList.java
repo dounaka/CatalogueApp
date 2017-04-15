@@ -9,12 +9,11 @@ import java.util.List;
 
 public class WishList extends Entity {
 
-    public List<Bag> bags = new ArrayList<>();
 
-    public static final long DEFAULT_WISHLIST_ID = 13000;
+
+    public List<Long> bags = new ArrayList<>();
 
     public WishList() {
         super();
-        this.id = DEFAULT_WISHLIST_ID;
     }
 }

@@ -8,6 +8,7 @@ import java.util.TreeMap;
 
 import ca.tash.catalogueapp.store.Bag;
 import ca.tash.catalogueapp.store.Entity;
+import ca.tash.catalogueapp.store.WishList;
 
 /**
  * Created by dounaka on 2017-04-13.
@@ -47,6 +48,18 @@ public class DataStore implements Serializable {
                 clazzEntities.add((T) entity);
         }
         return clazzEntities;
+    }
+
+    private static final long DEFAULT_WISHLIST_ID = 13000;
+
+    public synchronized WishList getUserWishList() {
+        WishList wishList = get(WishList.class, DEFAULT_WISHLIST_ID);
+        if (wishList == null) {
+            wishList = new WishList();
+            wishList.id = DEFAULT_WISHLIST_ID;
+            put(wishList);
+        }
+        return wishList;
     }
 
 

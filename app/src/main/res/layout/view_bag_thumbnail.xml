@@ -6,8 +6,7 @@
     android:layout_margin="@dimen/space_small"
     android:background="#FFffffff"
     android:elevation="8dp"
-    app:cardCornerRadius="8dp"
-    >
+    app:cardCornerRadius="8dp">
 
     <ImageView
         android:id="@+id/imgBag"
@@ -17,7 +16,8 @@
         android:layout_margin="@dimen/space_medium"
         android:adjustViewBounds="true"
         android:src="@drawable/travol"
-        android:text="@string/title_catalogue" />
+        android:text="@string/title_catalogue"
+        android:transitionName="image" />
 
     <TextView
         android:id="@+id/txtBagName"

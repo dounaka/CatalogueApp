@@ -9,12 +9,25 @@
         <item name="android:colorPrimaryDark">@color/primaryDark</item>
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="android:colorAccent">@color/accent</item>
+
+        <item name="android:windowEnterTransition">@transition/window_enter</item>
+        <item name="android:windowReturnTransition">@transition/window_return</item>
+        <item name="android:windowSharedElementsUseOverlay">false</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowAllowReturnTransitionOverlap">false</item>
+
+
     </style>
 
     <style name="title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/text_size_big</item>
     </style>
+
+
+
 
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

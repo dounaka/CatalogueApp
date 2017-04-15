@@ -11,13 +11,14 @@
     <string name="proceed_checkout">Proceed to check out</string>
     <string name="free_shipping">Free Shipping World Wide</string>
     <string name="add_whishlist">Add to wish list</string>
+    <string name="remove_whishlist">Remove from wish list</string>
     <string name="subtotal"><b>Sub total</b> $500</string>
     <string name="error_notfound_data">Error, data not found</string>
     <string name="out_of_stock">Out of stock</string>
 
 
-    <string name="height_cm_inche">H:%1$dcm/%2$d\"</string>
-    <string name="width_cm_inche">W:%1$dcm/%2$d\"</string>
-    <string name="deep_cm_inche">D:%1$dcm/%2$d\"</string>
+    <string name="height_cm_inche">H: %1$dcm/%2$d\"</string>
+    <string name="width_cm_inche">W: %1$dcm/%2$d\"</string>
+    <string name="deep_cm_inche">D: %1$dcm/%2$d\"</string>
 
 </resources>

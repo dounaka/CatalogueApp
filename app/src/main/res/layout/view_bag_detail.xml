@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -16,19 +17,19 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/space_medium"
             android:adjustViewBounds="true"
-            android:src="@drawable/travol" />
+            android:src="@drawable/travol"
+            android:transitionName="image" />
     </FrameLayout>
 
 
     <LinearLayout
+        android:id="@+id/containerBagInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/bag_detail_info_margin_top"
         android:orientation="vertical"
-
         android:padding="@dimen/space_small"
-
-        >
+        android:visibility="visible">
 
 
         <android.support.v7.widget.CardView
@@ -87,26 +88,42 @@
                     android:textColor="@color/black" />
 
 
-                <LinearLayout
+                <ViewFlipper
+                    android:id="@+id/viewflipperColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:padding="@dimen/space_small">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="top"
-                        android:layout_weight="1"
-                        android:text="@string/colors"
-                        android:textColor="@color/black" />
-
-                    <ca.tash.catalogueapp.ui.ColorListView
-                        android:id="@+id/viewBagColorList"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="4" />
-                </LinearLayout>
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="top"
+                            android:layout_weight="1"
+                            android:text="@string/colors"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <ca.tash.catalogueapp.ui.ColorListView
+                            android:id="@+id/viewBagColorList"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/out_of_stock"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/text_size_medium"
+                        android:textStyle="bold" />
+
+                </ViewFlipper>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -121,7 +138,8 @@
                         android:layout_gravity="top"
                         android:layout_weight="1"
                         android:text="@string/size"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
                     <ca.tash.catalogueapp.ui.DimensionView
                         android:id="@+id/viewBagDimension"
@@ -173,7 +191,7 @@
 
 
         <Button
-            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/buttonAddWishlist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -181,7 +199,24 @@
             android:layout_marginLeft="@dimen/space_big"
             android:layout_marginRight="@dimen/space_big"
             android:layout_marginTop="@dimen/space_small"
-            android:text="@string/add_whishlist" />
+            android:background="@drawable/bg_red"
+            android:text="@string/add_whishlist"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonRemoveWishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/space_medium"
+            android:layout_marginLeft="@dimen/space_big"
+            android:layout_marginRight="@dimen/space_big"
+            android:layout_marginTop="@dimen/space_small"
+            android:background="@drawable/bg_black"
+            android:text="@string/remove_whishlist"
+            android:textColor="@color/white"
+            android:visibility="gone" />
     </LinearLayout>
 
 </FrameLayout>

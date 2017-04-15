@@ -9,22 +9,26 @@ import android.view.ViewGroup;
 import ca.tash.catalogueapp.R;
 import ca.tash.catalogueapp.provider.DataStore;
 import ca.tash.catalogueapp.store.Bag;
+import ca.tash.catalogueapp.store.WishList;
 import ca.tash.catalogueapp.ui.BagDetailView;
 
 /**
  * Created by dounaka on 2017-04-14.
  */
 
-public class BagDetailFragment extends Fragment {
+public class BagDetailFragment extends Fragment implements BagDetailView.Listener{
     private long mBagId = -1;
     private Bag mBag;
+    private WishList mWishList;
 
     private BagDetailView mBagDetailView;
+
+    public static final String PARAM_BAG_ID = "param.bagId";
 
     public static BagDetailFragment newInstance(long bagId) {
         BagDetailFragment fragment = new BagDetailFragment();
         Bundle args = new Bundle();
-        args.putLong(Bag.PARAM_BAG_ID, bagId);
+        args.putLong(PARAM_BAG_ID, bagId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,7 +37,7 @@ public class BagDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mBagId = getArguments().getLong(Bag.PARAM_BAG_ID);
+            mBagId = getArguments().getLong(PARAM_BAG_ID);
         }
     }
 
@@ -49,9 +53,26 @@ public class BagDetailFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mBag = DataStore.getInstance().get(Bag.class, mBagId);
+        mWishList = DataStore.getInstance().getUserWishList();
         mBagDetailView.show(mBag);
-
+        mBagDetailView.listener = this;
+        if (mWishList.bags.contains(mBag.id))
+            mBagDetailView.showRemoveToWishlist();
+        else
+            mBagDetailView.showAddToWishlist();
     }
 
+    @Override
+    public void onAdd(long bagId) {
+        mWishList.bags.add(bagId);
+        DataStore.getInstance().put(mWishList);
+        getActivity().finish();
+    }
 
+    @Override
+    public void onRemove(long bagId) {
+        mWishList.bags.remove(bagId);
+        DataStore.getInstance().put(mWishList);
+        getActivity().finish();
+    }
 }

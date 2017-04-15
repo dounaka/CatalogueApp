@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Bag extends Entity {
 
-    public static final String PARAM_BAG_ID = "param.bagId";
+
     public String name, shortDesc, longDesc, pict;
 
     public long photoId;
