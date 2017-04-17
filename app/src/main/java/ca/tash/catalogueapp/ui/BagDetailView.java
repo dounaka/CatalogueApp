@@ -71,7 +71,7 @@ public class BagDetailView extends EntityView<Bag> implements View.OnClickListen
     protected void showEntity(final Bag bag) {
         mImgView.setImageResource(PhotoProvider.getPhotoRes(bag.photoId));
         mTxtDesc.setText(bag.longDesc);
-        mTxtPrice.setText("$ " + bag.price);
+        mTxtPrice.setText(getResources().getString(R.string.price,  bag.price));
         if (bag.colors == null || bag.colors.size() == 0)
             mViewFlipper.setDisplayedChild(1);
         else

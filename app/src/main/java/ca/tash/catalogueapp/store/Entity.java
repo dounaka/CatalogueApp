@@ -1,9 +1,5 @@
 package ca.tash.catalogueapp.store;
 
-/**
- * Created by dounaka on 2017-04-13.
- */
-
 public class Entity {
     private static final String SEP = "_";
     public long id;

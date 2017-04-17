@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/space_small"
     android:orientation="vertical"
     tools:context="ca.tash.catalogueapp.fragment.WishListFragment">
 
@@ -18,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="@dimen/space_small">
 
             <TextView
                 style="@style/title"
@@ -29,43 +29,70 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txtTopTotal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:text="@string/total"
-                android:textColor="@color/black"
                 android:textSize="@dimen/text_size_big" />
 
         </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:minHeight="200dp" android:background="#22000333"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/space_big"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/linearLayoutWishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"></LinearLayout>
 
-
-    </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:id="@+id/txtEmptyWishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_big"
+            android:gravity="center"
+            android:text="@string/empty_wishlist"
+            android:textSize="@dimen/text_size_big"
+            android:visibility="gone" />
 
 
         <LinearLayout
+            android:id="@+id/linearLayoutTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_big"
             android:layout_marginBottom="@dimen/space_big"
+            android:layout_marginTop="@dimen/space_big"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/subtotal"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_big" />
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_small"
+                    android:text="@string/subtotal"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_big"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtBottomTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_big" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -74,12 +101,14 @@
                 android:textSize="@dimen/text_size_big" />
 
 
-            <Button
+            <Button android:id="@+id/btnCheckout"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space_medium"
                 android:text="@string/proceed_checkout" />
+
+
         </LinearLayout>
 
     </LinearLayout>

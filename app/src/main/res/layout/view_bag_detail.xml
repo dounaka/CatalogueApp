@@ -39,8 +39,8 @@
             android:layout_marginRight="@dimen/space_small"
             android:layout_marginTop="@dimen/space_small"
 
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="@dimen/cardview_corner_radius"
+            app:cardElevation="@dimen/cardview_elevation">
 
 
             <LinearLayout
@@ -69,7 +69,6 @@
                         android:text="@string/free_shipping"
                         android:textSize="@dimen/text_size_medium" />
 
-
                 </LinearLayout>
 
                 <View
@@ -77,7 +76,6 @@
                     android:layout_height="1.4dp"
                     android:layout_margin="1dp"
                     android:background="@color/bgDefault" />
-
 
                 <TextView
                     android:id="@+id/txtBagDesc"
@@ -111,6 +109,8 @@
                         <ca.tash.catalogueapp.ui.ColorListView
                             android:id="@+id/viewBagColorList"
                             android:layout_width="0dp"
+                            app:imgSize="@dimen/color_size_medium"
+                            app:imgMargin="@dimen/space_small"
                             android:layout_height="wrap_content"
                             android:layout_weight="4" />
                     </LinearLayout>
@@ -157,8 +157,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/space_small"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="@dimen/cardview_corner_radius"
+            app:cardElevation="@dimen/cardview_elevation">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -177,11 +177,10 @@
 
                 <RatingBar
                     android:id="@+id/ratingBarBag"
-                    style="@android:style/Widget.Material.RatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:isIndicator="false"
+                    android:isIndicator="false" android:theme="@style/RatingBar"
                     android:numStars="5" />
 
             </LinearLayout>

@@ -1,7 +1,9 @@
 package ca.tash.catalogueapp.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +14,9 @@ import ca.tash.catalogueapp.store.Bag;
 import ca.tash.catalogueapp.store.WishList;
 import ca.tash.catalogueapp.ui.BagDetailView;
 
-/**
- * Created by dounaka on 2017-04-14.
- */
-
-public class BagDetailFragment extends Fragment implements BagDetailView.Listener{
+public class BagDetailFragment extends Fragment implements BagDetailView.Listener {
     private long mBagId = -1;
-    private Bag mBag;
+
     private WishList mWishList;
 
     private BagDetailView mBagDetailView;
@@ -52,11 +50,11 @@ public class BagDetailFragment extends Fragment implements BagDetailView.Listene
     @Override
     public void onResume() {
         super.onResume();
-        mBag = DataStore.getInstance().get(Bag.class, mBagId);
+        final Bag bag = DataStore.getInstance().get(Bag.class, mBagId);
         mWishList = DataStore.getInstance().getUserWishList();
-        mBagDetailView.show(mBag);
+        mBagDetailView.show(bag);
         mBagDetailView.listener = this;
-        if (mWishList.bags.contains(mBag.id))
+        if (mWishList.containsBag(bag.id))
             mBagDetailView.showRemoveToWishlist();
         else
             mBagDetailView.showAddToWishlist();
@@ -64,15 +62,27 @@ public class BagDetailFragment extends Fragment implements BagDetailView.Listene
 
     @Override
     public void onAdd(long bagId) {
-        mWishList.bags.add(bagId);
+        notifyWishlistUpdate();
+        mWishList.addBag(bagId);
         DataStore.getInstance().put(mWishList);
         getActivity().finish();
     }
 
     @Override
     public void onRemove(long bagId) {
-        mWishList.bags.remove(bagId);
+        notifyWishlistUpdate();
+        mWishList.removeBag(bagId);
         DataStore.getInstance().put(mWishList);
         getActivity().finish();
     }
+
+
+    private void notifyWishlistUpdate() {
+        Intent intent = new Intent();
+        intent.setAction(WishList.EVENT_WISHLIST_UPDATE);
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
+        localBroadcastManager.sendBroadcast(intent);
+    }
+
+
 }

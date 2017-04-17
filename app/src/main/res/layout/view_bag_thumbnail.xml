@@ -4,9 +4,9 @@
     android:layout_width="@dimen/thumbnail_size"
     android:layout_height="@dimen/thumbnail_size"
     android:layout_margin="@dimen/space_small"
-    android:background="#FFffffff"
-    android:elevation="8dp"
-    app:cardCornerRadius="8dp">
+    android:background="@color/white"
+    app:cardCornerRadius="@dimen/cardview_corner_radius"
+    app:cardElevation="@dimen/cardview_elevation">
 
     <ImageView
         android:id="@+id/imgBag"

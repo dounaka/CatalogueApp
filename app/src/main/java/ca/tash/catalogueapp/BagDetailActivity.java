@@ -2,22 +2,18 @@ package ca.tash.catalogueapp;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import ca.tash.catalogueapp.fragment.BagDetailFragment;
 import ca.tash.catalogueapp.provider.DataStore;
 import ca.tash.catalogueapp.store.Bag;
 
-public class BagDetailActivity extends FragmentActivity {
+public class BagDetailActivity extends Activity {
 
 
     private long mBagId;
@@ -38,7 +34,9 @@ public class BagDetailActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getActionBar().setTitle(DataStore.getInstance().get(Bag.class, mBagId).name);
+        final String title = DataStore.getInstance().get(Bag.class, mBagId).name;
+        if (getActionBar() != null && title != null)
+            getActionBar().setTitle(title);
     }
 
 
@@ -46,9 +44,9 @@ public class BagDetailActivity extends FragmentActivity {
     public static void launch(Activity activity, long bagid, View transitionView) {
         Intent intent = getLaunchIntent(activity, bagid);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
                     activity, transitionView, transitionView.getTransitionName());
-            ActivityCompat.startActivity(activity, intent, options.toBundle());
+            activity.startActivity(intent, options.toBundle());
         } else {
             activity.startActivity(intent);
         }

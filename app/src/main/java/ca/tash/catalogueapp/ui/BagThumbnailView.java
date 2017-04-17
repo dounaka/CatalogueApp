@@ -10,7 +10,8 @@ import ca.tash.catalogueapp.store.Bag;
 
 /**
  * Created by dounaka on 2017-04-13.
- * very simple fragment
+ * very simple
+ * display the photo and the bag name
  */
 
 public class BagThumbnailView extends EntityView<Bag> {

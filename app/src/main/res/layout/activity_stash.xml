@@ -9,7 +9,6 @@
     tools:context="ca.tash.catalogueapp.StashActivity">
 
 
-
     <include layout="@layout/content_stash" />
 
 
